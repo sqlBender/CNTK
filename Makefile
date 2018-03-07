@@ -400,7 +400,12 @@ MATH_SRC =\
 	$(SOURCEDIR)/Math/DataTransferer.cpp \
 	$(SOURCEDIR)/Math/RNGHandle.cpp \
 	$(SOURCEDIR)/Math/TensorView.cpp \
+
+ifneq ($(HAS_MPI),0)
+MATH_SRC +=\
 	$(SOURCEDIR)/Math/NcclComm.cpp \
+
+endif
 
 ifdef CUDA_PATH
 MATH_SRC +=\
@@ -502,7 +507,6 @@ CNTKLIBRARY_COMMON_SRC =\
 	$(SOURCEDIR)/CNTKv2LibraryDll/Variable.cpp \
 	$(SOURCEDIR)/CNTKv2LibraryDll/Learner.cpp \
 	$(SOURCEDIR)/CNTKv2LibraryDll/Serialization.cpp \
-	$(SOURCEDIR)/CNTKv2LibraryDll/DistributedCommunicator.cpp \
 	$(SOURCEDIR)/CNTKv2LibraryDll/DistributedLearnerBase.cpp \
 	$(SOURCEDIR)/CNTKv2LibraryDll/DataParallelDistributedLearner.cpp \
 	$(SOURCEDIR)/CNTKv2LibraryDll/ProgressWriter.cpp \
@@ -521,7 +525,7 @@ CNTKLIBRARY_COMMON_SRC =\
 	$(SOURCEDIR)/CNTKv2LibraryDll/proto/onnx/defs/reduction/defs.cpp \
 	$(SOURCEDIR)/CNTKv2LibraryDll/proto/onnx/defs/rnn/defs.cpp \
 	$(SOURCEDIR)/CNTKv2LibraryDll/proto/onnx/defs/tensor/defs.cpp \
-    $(SOURCEDIR)/CNTKv2LibraryDll/proto/onnx/defs/traditionalml/defs.cpp \
+	$(SOURCEDIR)/CNTKv2LibraryDll/proto/onnx/defs/traditionalml/defs.cpp \
 	$(SOURCEDIR)/CNTKv2LibraryDll/proto/onnx/core/constants.cpp \
 	$(SOURCEDIR)/CNTKv2LibraryDll/proto/onnx/core/status.cpp \
 	$(SOURCEDIR)/CNTKv2LibraryDll/proto/onnx/core/utils.cpp \
@@ -535,6 +539,12 @@ CNTKLIBRARY_COMMON_SRC =\
     $(SOURCEDIR)/CNTKv2LibraryDll/proto/onnx/CNTKToONNX.cpp \
 	$(SOURCEDIR)/CNTKv2LibraryDll/proto/onnx/ONNXToCNTK.cpp \
 	$(SOURCEDIR)/CNTKv2LibraryDll/proto/onnx/ONNX.cpp \
+
+ifneq ($(HAS_MPI),0)
+CNTKLIBRARY_COMMON_SRC += \
+	$(SOURCEDIR)/CNTKv2LibraryDll/DistributedCommunicator.cpp \
+
+endif
 
 CNTKLIBRARY_SRC =\
 	$(SOURCEDIR)/CNTKv2LibraryDll/ComputeInputStatistics.cpp \
