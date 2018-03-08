@@ -1167,7 +1167,7 @@ then
     fi
 fi
 
-if test x$mpi_path = x
+if test x$mpi_path = x && test $have_mpi = yes
 then
     mpi_path=$(find_mpi)
     if test x${mpi_path} = x
