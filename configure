@@ -750,7 +750,7 @@ do
                     fi
                 fi
             else
-                eocho "--with-nccl cannot be used with --mpi=no"
+                echo "--with-nccl cannot be used with --mpi=no"
                 exit 1
             fi
             ;;
