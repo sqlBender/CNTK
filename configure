@@ -597,6 +597,10 @@ do
             then
                 have_mpi=$optarg
                 have_nccl=$have_mpi
+                if test $have_nccl = no
+                then
+                    nccl_path=
+                fi
             else
                 echo "Invalid value for --mpi $optarg"
                 show_help
@@ -745,6 +749,9 @@ do
                         exit 1
                     fi
                 fi
+            else
+                eocho "--with-nccl cannot be used with --mpi=no"
+                exit 1
             fi
             ;;
         --with-mkl*)
