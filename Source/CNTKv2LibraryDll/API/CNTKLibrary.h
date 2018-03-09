@@ -2469,9 +2469,9 @@ namespace CNTK
     public:
 
         ///
-        /// a special index for one hot to indicate zero vector, note it's in 32-bit range for C# binding
+        /// a special index for one hot to indicate zero vector
         ///
-        static const size_t OneHotSkip = (size_t)0xffffffff;
+        static const size_t OneHotSkip = (size_t)-1;
 
         ///
         /// A multi-dimensional value with no mask.
